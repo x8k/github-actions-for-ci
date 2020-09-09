@@ -1,0 +1,14 @@
+name: Team awesome's approval workflow
+on: pull_request_review
+jobs:
+  labelWhenApproved:
+    name: pci approval labeling
+    runs-on: ubuntu-latest
+    steps:
+    - name: pci approval labeling
+      uses: pullreminders/label-when-approved-action@master
+      env:
+        APPROVALS: "1"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ADD_LABLE: "PCI approved"
+        REMOVE_LABLE: "awaiting%20approval%20form%PCI%20Team"
